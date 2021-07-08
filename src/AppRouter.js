@@ -1,9 +1,9 @@
 import React from 'react';
 import { Router } from '@reach/router';
 
-import useIsAuth from './hooks/useIsAuth';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import useIsAuth from './hooks/useIsAuth';
 
 function App() {
   useIsAuth();

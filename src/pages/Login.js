@@ -2,10 +2,10 @@ import { navigate } from '@reach/router';
 import { ErrorMessage, Formik, Form } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
-// import useCookie from 'react-use-cookie';
 
 import API from '../helpers/api';
 import { setToken } from '../helpers/auth';
+import { useCtxUser } from '../userContext';
 
 const validationSchema = yup.object({
   username: yup.string().required('El usuario o email es requerido'),
@@ -14,6 +14,7 @@ const validationSchema = yup.object({
 
 const Login = () => {
   const [error, setError] = React.useState('');
+  const [, setUser] = useCtxUser();
 
   const makeLogin = async (username, password) => {
     API.get('/sanctum/csrf-cookie').then(async () => {
@@ -23,6 +24,7 @@ const Login = () => {
       }).then((resp) => {
         setError('');
         setToken(resp.data.access_token);
+        setUser(resp.data.user);
         navigate('/');
       }).catch((err) => {
         setError(err.response.data.message);

@@ -109,11 +109,20 @@ form input:focus {
   width: 100%;
   padding: 15px;
   color: white;
+  justify-content: space-between;
 }
 
 .navbar a {
   text-transform: uppercase;
   color: white;
   font-size: 16px;
+}
 
+.avatar {
+  width: 28px;
+  border: 1px solid #fff;
+  text-align: center;
+  border-radius: 100%;
+  /* display: flex */
+  /* margin-right: 10px */
 }
