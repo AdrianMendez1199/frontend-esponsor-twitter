@@ -1,18 +1,16 @@
 import React from 'react';
-import Card from '../components/Card';
+
+// import Card from '../components/Card';
 import Navbar from '../components/Navbar';
-import { useCtxUser } from '../userContext';
+// import API from '../helpers/api';
+// import usePosts from '../hooks/usePosts';
 
-const Home = () => {
-  const [user] = useCtxUser();
-  return (
-    <div>
-      <Navbar />
-      <main>
-        {user && <Card username={user.name} /> }
-      </main>
-    </div>
-  );
-};
-
+const Home = () => (
+  <div className="home-container">
+    <Navbar />
+    {/* {posts.data && posts.data.map((post) => (
+        <Card content={post.body} user={post.user.name} key={post.id} />
+      ))} */}
+  </div>
+);
 export default Home;

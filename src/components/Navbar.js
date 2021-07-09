@@ -8,11 +8,18 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <Link to="/"> CPTWITTER</Link>
-      {user && (
-      <div className="avatar">
-        {user.name.split('')[0]}
+
+      <div className="button-container">
+        { user && (
+        <p>
+          Bienvenido
+          {' '}
+          { user.name.split(' ')[0] }
+        </p>
+        )}
+        <button type="button">Crear Post</button>
       </div>
-      )}
+
     </div>
   );
 };
