@@ -5,22 +5,26 @@ const usePosts = (pageNumber) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
-  const [hasMore] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     setError(false);
 
-    API.get(`/api/home?page=${pageNumber}`).then((resp) => {
-      setData(resp.data);
+    API.get(`/api/home?page=${pageNumber}`).then(({ data: posts }) => {
+      setData((prev) => [...prev, posts]);
+      setHasMore(posts.next_page_url != null);
     }).catch(() => {
       setLoading(false);
       setError(true);
-    }, [pageNumber]);
-  });
+    });
+  }, [pageNumber]);
 
   return {
-    loading, error, data, hasMore,
+    loading,
+    error,
+    data,
+    hasMore,
   };
 };
 

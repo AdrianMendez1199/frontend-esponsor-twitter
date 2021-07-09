@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Card = ({ content, user }) => (
+const Card = ({ content, username }) => (
   <div className="card-container">
 
     <div className="card-content">
       <div>
-        {user.split(' ')[0]}
+        <b>{username}</b>
       </div>
-      { content}
+      {content}
     </div>
   </div>
 );
 
 Card.propTypes = {
   content: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
 };
 export default Card;
