@@ -25,20 +25,22 @@ const Home = () => {
   return (
     <div className="home-container">
       <Navbar />
-
-      {data && data.map((post) => (
-        <Card
-          content={post.message}
-          username={post.user.username}
-          key={post.id}
-          createdAt={post.created_at}
-        />
-      ))}
-      {loading && (
-      <div className="loading-container">
-        <LoadingCircle />
+      <div className="home-content">
+        {data && data.map((post) => (
+          <Card
+            content={post.message}
+            username={post.user.username}
+            key={post.id}
+            createdAt={post.created_at}
+          />
+        ))}
+        {loading && (
+        <div className="loading-container">
+          <LoadingCircle />
+        </div>
+        ) }
       </div>
-      ) }
+
       <div className="top" />
     </div>
   );

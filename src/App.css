@@ -4,17 +4,13 @@
 *::after {
   margin: 0;
   box-sizing: border-box;
+  /* overflow: hidden; */
 }
 
 html {
   background-color: #EEF0F1;
-  scrollbar-width: none;
+  /* scrollbar-width: none; */
 }
-
-html::-webkit-scrollbar {
-  display: none;
-}
-
 
 body {
   font-family: "Poppins", sans-serif;
@@ -99,7 +95,7 @@ form input:focus {
   margin-top: 1em;
   margin-bottom: 1em;
   cursor: pointer;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: all 200ms ease-in-out;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
 }
@@ -110,13 +106,13 @@ form input:focus {
 
 .navbar {
   display: flex;
-  overflow: visible;
   background-color: #FFF;
   width: 100%;
   padding: 8px;
   color: #000;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
 }
 
 .navbar a {
@@ -277,8 +273,16 @@ form input:focus {
 }
 /* end-loading circle css */
 
+
+.home-container {
+  overflow: auto;
+}
 .home-container .loading-container {
   display: flex;
   justify-content: center;
   margin-top: 50px;
+}
+
+.home-content { 
+  margin-top: 60px;
 }
