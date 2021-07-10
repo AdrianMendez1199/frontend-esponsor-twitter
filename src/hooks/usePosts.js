@@ -11,8 +11,9 @@ const usePosts = (pageNumber) => {
     setLoading(true);
     setError(false);
 
-    API.get(`/api/home?page=${pageNumber}`).then(({ data: posts }) => {
-      setData((prev) => [...prev, posts]);
+    API.get(`/api/home?page=${pageNumber}`).then(async ({ data: posts }) => {
+      setData((prev) => [...prev, ...posts.data]);
+      setLoading(false);
       setHasMore(posts.next_page_url != null);
     }).catch(() => {
       setLoading(false);

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Card = ({ content, username }) => (
+const Card = ({ content, username, createdAt }) => (
   <div className="card-container">
 
     <div className="card-content">
@@ -9,6 +9,9 @@ const Card = ({ content, username }) => (
         <b>{username}</b>
       </div>
       {content}
+      <div className="date-post">
+        {createdAt}
+      </div>
     </div>
   </div>
 );
@@ -16,5 +19,6 @@ const Card = ({ content, username }) => (
 Card.propTypes = {
   content: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
 };
 export default Card;

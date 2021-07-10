@@ -2,41 +2,44 @@ import React, { useEffect, useState } from 'react';
 
 import Card from '../components/Card';
 import Navbar from '../components/Navbar';
+import LoadingCircle from '../components/LoadingCircle';
 import usePosts from '../hooks/usePosts';
 
 const Home = () => {
   const [page, setPage] = useState(1);
-  const { data, hasMore } = usePosts(page);
+  const { data, hasMore, loading } = usePosts(page);
 
   const isScrolling = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop
-      !== document.documentElement.offsetHeight) {
-      console.log('scrolling down2');
-    } else {
-      console.log('hasmore', hasMore);
-      if (hasMore) {
-        setPage((prev) => prev + 1);
-      }
-      console.log('scrolling down');
+      >= document.documentElement.offsetHeight && hasMore) {
+      setPage((prev) => prev + 1);
     }
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', isScrolling);
+    window.addEventListener('scroll', isScrolling, { passive: true });
     return () => window.removeEventListener('scroll', isScrolling);
   }, [hasMore]);
 
   return (
     <div className="home-container">
       <Navbar />
-      {data.data && data.data.map((post) => (
+
+      {data && data.map((post) => (
         <Card
           content={post.message}
           username={post.user.username}
           key={post.id}
+          createdAt={post.created_at}
         />
       ))}
+      {loading && (
+      <div className="loading-container">
+        <LoadingCircle />
+      </div>
+      ) }
+      <div className="top" />
     </div>
   );
 };
