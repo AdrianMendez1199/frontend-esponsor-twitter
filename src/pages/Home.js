@@ -3,11 +3,14 @@ import React, { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import Navbar from '../components/Navbar';
 import LoadingCircle from '../components/LoadingCircle';
+import Post from '../components/Post';
+import Modal from '../components/Modal';
 import usePosts from '../hooks/usePosts';
 
 const Home = () => {
   const [page, setPage] = useState(1);
   const { data, hasMore, loading } = usePosts(page);
+  const modalRef = React.createRef();
 
   const isScrolling = () => {
     if (
@@ -22,9 +25,22 @@ const Home = () => {
     return () => window.removeEventListener('scroll', isScrolling);
   }, [hasMore]);
 
+  const handleClick = () => {
+    modalRef.current.style.display = 'block';
+  };
+
   return (
     <div className="home-container">
       <Navbar />
+
+      <Modal ref={modalRef}>
+        <div>TRST</div>
+      </Modal>
+
+      <div className="post-container__home">
+        <Post handleClick={handleClick} />
+      </div>
+
       <div className="home-content">
         {data && data.map((post) => (
           <Card

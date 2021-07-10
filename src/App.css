@@ -52,7 +52,7 @@ a:hover {
   text-align: center;
 }
 
-form {
+.container form {
   background-color: #FFF;
   padding: 2em;
   padding-bottom: 3em;
@@ -67,7 +67,7 @@ form {
   flex-wrap: wrap;
   flex-direction: column;
 }
-form input {
+.container form input {
   color: #384047;
   background-color: #e8eeef;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
@@ -78,7 +78,7 @@ form input {
   width: 100%;
   font-family: Poppins;
 }
-form input:focus {
+.container form input:focus {
   outline: none;
 }
 
@@ -139,11 +139,7 @@ form input:focus {
   font-weight: bold;
 }
 
-.post-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
+
 
 .button-container button:hover {
   background: #323ebe;
@@ -180,8 +176,12 @@ form input:focus {
   .card-content {
     max-width: 90%
   }
-}
 
+  .post-container {
+      width: 325px !important;
+  }
+
+}
 
 /* @media (min-width: 576px) and (max-width: 991.98px) and (orientation:portrait) {
   body{background: orange;}
@@ -286,3 +286,82 @@ form input:focus {
 .home-content { 
   margin-top: 60px;
 }
+
+.post-container__home {
+ margin-top: 100px;
+ display: flex;
+ max-width: 100%;
+ justify-content: center;
+}
+
+.post-container {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  width: 560px;
+  padding: 20px;
+  max-width: 560px;
+  border-radius: 7px;
+ } 
+
+.post-container button {
+  padding: 6px 30px;
+  width: 90%;
+  border-radius: 30px;
+  border: 1px solid#FFF;
+  opacity: 1.5;
+  font-family: Poppins;
+} 
+
+.post-container button:hover {
+  /* color */
+  background: #9db3c8;
+  cursor: pointer;
+  color: #FFF;
+}
+
+
+/* MODAL css*/
+/* The Modal (background) */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+  /* max-width: 500px; */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 7% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 40%; 
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  background: transparent;
+  color: #000;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* end modal css */
