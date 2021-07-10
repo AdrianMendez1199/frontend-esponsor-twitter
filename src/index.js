@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
-import App from './AppRouter';
+import App from './eSponsorTwitter';
 import { UserProvider } from './userContext';
 
 ReactDOM.render(
