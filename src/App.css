@@ -181,6 +181,11 @@ a:hover {
       width: 325px !important;
   }
 
+  .modal-content {
+    width: 80% !important;
+    margin: 30% auto !important;
+  }
+
 }
 
 /* @media (min-width: 576px) and (max-width: 991.98px) and (orientation:portrait) {
@@ -365,3 +370,15 @@ a:hover {
   cursor: pointer;
 }
 /* end modal css */
+
+.modal-content textarea {
+  border: none;
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+  font-family: 'Poppins';
+  text-align: center;
+  word-wrap: break-word;
+  overflow: hidden;
+  resize: none;
+}

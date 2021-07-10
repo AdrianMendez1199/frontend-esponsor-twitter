@@ -5,12 +5,14 @@ import Navbar from '../components/Navbar';
 import LoadingCircle from '../components/LoadingCircle';
 import Post from '../components/Post';
 import Modal from '../components/Modal';
+import PostForm from '../components/PostForm';
 import usePosts from '../hooks/usePosts';
 
 const Home = () => {
   const [page, setPage] = useState(1);
   const { data, hasMore, loading } = usePosts(page);
   const modalRef = React.createRef();
+  const [lengthPost, setlengthPost] = useState(0);
 
   const isScrolling = () => {
     if (
@@ -29,12 +31,19 @@ const Home = () => {
     modalRef.current.style.display = 'block';
   };
 
+  const handleChange = (e) => {
+    setlengthPost(e.target.value.length);
+  };
+
   return (
     <div className="home-container">
       <Navbar />
 
       <Modal ref={modalRef}>
-        <div>TRST</div>
+        <PostForm
+          handleChange={handleChange}
+          lengthPost={lengthPost}
+        />
       </Modal>
 
       <div className="post-container__home">
