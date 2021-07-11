@@ -382,3 +382,20 @@ a:hover {
   overflow: hidden;
   resize: none;
 }
+
+.post-from {
+  padding: 20px;
+}
+.post-from button {
+   margin: 4px;
+   border: none;
+   padding: 6px 30px;
+   border-radius: 7px;
+   background: #0A66C2;
+   color: #FFF;
+   float: right;
+}
+
+.post-from button:hover {
+  background: #004182;
+}
