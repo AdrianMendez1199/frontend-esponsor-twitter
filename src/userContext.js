@@ -19,7 +19,6 @@ export const UserProvider = ({ children }) => {
   );
 };
 
-// export const useCtxUser = () => useContext(UserContext);
 export function useCtxUser() {
   return useContext(UserContext);
 }

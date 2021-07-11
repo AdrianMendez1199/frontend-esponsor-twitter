@@ -152,7 +152,8 @@ a:hover {
 }
 
 .card-content{
- max-width: 560px;
+ width: 560px;
+ /* min-width: 560px; */
  margin-top: 20px;
  background: #FFF;
  padding: 21px;
@@ -174,7 +175,7 @@ a:hover {
 
 @media (min-width: 320px) and (max-width: 480px) {
   .card-content {
-    max-width: 90%
+    max-width: 90% !important;
   }
 
   .post-container {

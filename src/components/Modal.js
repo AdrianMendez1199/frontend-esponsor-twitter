@@ -9,7 +9,7 @@ const Modal = React.forwardRef(({ children }, ref) => {
   };
 
   return (
-    <div className="modal" ref={modalRef}>
+    <div id="myModal" className="modal" ref={modalRef}>
       <div className="modal-content">
         <button
           className="close"
@@ -21,7 +21,6 @@ const Modal = React.forwardRef(({ children }, ref) => {
         </button>
         {children}
       </div>
-
     </div>
   );
 });

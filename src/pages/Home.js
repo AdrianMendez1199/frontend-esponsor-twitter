@@ -10,9 +10,10 @@ import usePosts from '../hooks/usePosts';
 
 const Home = () => {
   const [page, setPage] = useState(1);
-  const { data, hasMore, loading } = usePosts(page);
+  const {
+    data, hasMore, loading, setData,
+  } = usePosts(page);
   const modalRef = React.createRef();
-  const [lengthPost, setlengthPost] = useState(0);
 
   const isScrolling = () => {
     if (
@@ -31,18 +32,14 @@ const Home = () => {
     modalRef.current.style.display = 'block';
   };
 
-  const handleChange = (e) => {
-    setlengthPost(e.target.value.length);
-  };
-
   return (
     <div className="home-container">
       <Navbar />
 
       <Modal ref={modalRef}>
         <PostForm
-          handleChange={handleChange}
-          lengthPost={lengthPost}
+          setData={setData}
+          handleClose={handleClick}
         />
       </Modal>
 

@@ -26,6 +26,7 @@ const usePosts = (pageNumber) => {
     error,
     data,
     hasMore,
+    setData,
   };
 };
 
