@@ -1,4 +1,4 @@
-import { navigate } from '@reach/router';
+import { navigate, Link } from '@reach/router';
 import { ErrorMessage, Formik, Form } from 'formik';
 import React from 'react';
 import * as yup from 'yup';
@@ -78,7 +78,7 @@ const Login = () => {
               <br />
 
               <div className="signup-message">
-                {/* <a href="#">¿Aún no tienes cuenta? Click aquí</a> */}
+                <Link to="/register">¿Aún no tienes cuenta? Créala aquí</Link>
               </div>
 
             </div>
