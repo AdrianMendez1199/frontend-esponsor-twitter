@@ -1,11 +1,12 @@
+import React from 'react';
 import { navigate, Link } from '@reach/router';
 import { ErrorMessage, Formik, Form } from 'formik';
-import React from 'react';
 import * as yup from 'yup';
 
 import API from '../helpers/api';
 import { setToken } from '../helpers/auth';
 import { useCtxUser } from '../userContext';
+import Loading from '../components/LoadingCircle';
 
 const validationSchema = yup.object({
   username: yup.string().required('El usuario o email es requerido'),
@@ -14,19 +15,23 @@ const validationSchema = yup.object({
 
 const Login = () => {
   const [error, setError] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
   const [, setUser] = useCtxUser();
 
   const makeLogin = async (username, password) => {
-    API.get('/sanctum/csrf-cookie').then(async () => {
+    setLoading(true);
+    await API.get('/sanctum/csrf-cookie').then(async () => {
       await API.post('/api/login', {
         username,
         password,
-      }).then((resp) => {
+      }).then(async (resp) => {
         setError('');
-        setToken(resp.data.access_token);
+        await setToken(resp.data.access_token);
         setUser(resp.data.user);
+        setLoading(false);
         navigate('/');
       }).catch((err) => {
+        setLoading(false);
         setError(err.response.data.message);
       });
     });
@@ -34,6 +39,8 @@ const Login = () => {
 
   return (
     <div className="container">
+      { loading && <Loading />}
+
       <Formik
         onSubmit={async ({ username, password }) => {
           await makeLogin(username, password);
@@ -72,7 +79,7 @@ const Login = () => {
 
               <ErrorMessage name="password" component="div" className="error-message" />
               <br />
-              <button className="button" type="submit">
+              <button className="button" type="submit" disabled={loading}>
                 Iniciar Sesion
               </button>
               <br />
